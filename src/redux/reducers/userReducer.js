@@ -25,13 +25,13 @@ export default function(state = initialState, action) {
     case SET_USER:
       return {
         authenticated: true,
-        ...action.payload,
-        loading: false
+        loading: false,
+        ...action.payload
       };
-      case LOADING_USER:
+    case LOADING_USER:
       return {
-       ...state,
-       loading: true
+        ...state,
+        loading: true
       };
     default:
         return state;

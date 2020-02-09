@@ -42,17 +42,17 @@ export const signupUser = (newUserData, history) => (dispatch) => {
 }
 
 export const getUserData = () => (dispatch) => {
-  dispatch({ type: LOADING_USER});
-    axios
-      .get('/user')
-      .then((res) => {
-        dispatch({
-          type: SET_USER,
-          payload: res.data
-        });
-      })
-      .catch((err) => console.log(err));
-  };
+  dispatch({ type: LOADING_USER });
+  axios
+    .get('/user')
+    .then((res) => {
+      dispatch({
+        type: SET_USER,
+        payload: res.data
+      });
+    })
+    .catch((err) => console.log(err));
+};
 
   export const logoutUser = () => (dispatch) => {
     localStorage.removeItem('FBIDToken');
@@ -61,6 +61,16 @@ export const getUserData = () => (dispatch) => {
       type: SET_UNAUTHENTICATED,
     })
   }
+
+  export const uploadImage = (formData) => (dispatch) => {
+    dispatch({ type: LOADING_USER });
+    axios
+      .post('/user/image', formData)
+      .then(() => {
+        dispatch(getUserData());
+      })
+      .catch((err) => console.log(err));
+  };
 
   const setAuthorizationHeader = token => {
     localStorage.setItem('FBIDToken', `Bearer ${token}`);

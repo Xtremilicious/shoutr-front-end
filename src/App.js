@@ -20,9 +20,12 @@ import Login from "./pages/login";
 import Signup from "./pages/signup";
 
 import AuthRoute from "./util/AuthRoute";
-import Axios from "axios";
 
 const theme = createMuiTheme(themeFile);
+
+
+axios.defaults.baseURL =
+  'https://us-central1-shoutr-app.cloudfunctions.net/api';
 
 const token = localStorage.FBIDToken;
 
@@ -36,7 +39,7 @@ if (token) {
       type: SET_AUTHENTICATED
     });
     axios.defaults.headers.common['Authorization'] = token;
-    store.dispatch(getUserData);
+    store.dispatch(getUserData());
     }
 }
 
