@@ -3,6 +3,7 @@ import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 
 import Shout from '../components/Shout'
+import Profile from '../components/Profile';
 
 export class home extends Component {
   state = {
@@ -30,8 +31,8 @@ export class home extends Component {
         <Grid item sm={8} xs={12}>
           {recentShoutsMarkup}
         </Grid>
-        <Grid item sm={4} xs={12}>
-          <p>Content...</p>
+        <Grid item sm={4} xs={12} style={{paddingLeft: "1rem"}}>
+          <Profile />
         </Grid>
       </Grid>
     );
