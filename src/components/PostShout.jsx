@@ -40,7 +40,7 @@ export class PostShout extends Component {
     body: "",
     errors: {}
   };
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
       this.setState({
         errors: nextProps.UI.errors
