@@ -32,7 +32,7 @@ const token = localStorage.FBIDToken;
 if (token) {
   const decodedToken = jwtDecode(token);
   if (decodedToken.exp * 1000 < Date.now()) {
-    store.dispatch(logoutUser);
+    store.dispatch(logoutUser());
     window.location.href = "/login";
   } else {
     store.dispatch({

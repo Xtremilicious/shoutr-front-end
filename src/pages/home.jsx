@@ -1,29 +1,23 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
+import PropTypes from "prop-types";
 
-import Shout from '../components/Shout'
-import Profile from '../components/Profile';
+import Shout from "../components/Shout";
+import Profile from "../components/Profile";
+
+import { connect } from "react-redux";
+import { getShouts } from "../redux/actions/dataActions";
 
 export class home extends Component {
-  state = {
-    shouts: null
-  };
-
   componentDidMount() {
-    axios
-      .get("/shouts")
-      .then(res => {
-        this.setState({
-          shouts: res.data
-        });
-      })
-      .catch(err => console.log(err));
+    this.props.getShouts();
   }
 
   render() {
-    let recentShoutsMarkup = this.state.shouts
-      ? this.state.shouts.map(shout => <Shout key={shout.shoutID} shout={shout} />)
+    const { shouts, loading } = this.props.data;
+    let recentShoutsMarkup = !loading
+      ? shouts.map(shout => <Shout key={shout.shoutID} shout={shout} />)
       : "Loading...";
 
     return (
@@ -31,7 +25,7 @@ export class home extends Component {
         <Grid item sm={8} xs={12}>
           {recentShoutsMarkup}
         </Grid>
-        <Grid item sm={4} xs={12} style={{paddingLeft: "1rem"}}>
+        <Grid item sm={4} xs={12} style={{ paddingLeft: "1rem" }}>
           <Profile />
         </Grid>
       </Grid>
@@ -39,4 +33,12 @@ export class home extends Component {
   }
 }
 
-export default home;
+home.propTypes = {
+  getShouts: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired
+};
+const mapStateToProps = state => ({
+  data: state.data
+});
+
+export default connect(mapStateToProps, { getShouts })(home);

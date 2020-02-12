@@ -1,4 +1,4 @@
-import { SET_ERRORS, CLEAR_ERRORS, LOADING_UI } from "../types";
+import { SET_ERRORS, STOP_LOADING_UI, CLEAR_ERRORS, LOADING_UI } from "../types";
 
 const intialState = {
   loading: false,
@@ -26,5 +26,10 @@ export default function(state = intialState, action) {
           ...state,
           loading: true
       };
+      case STOP_LOADING_UI:
+        return{
+          ...state,
+          loading: false
+        }
   }
 }
