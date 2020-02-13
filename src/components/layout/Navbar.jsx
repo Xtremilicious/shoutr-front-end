@@ -5,13 +5,15 @@ import { connect } from "react-redux";
 
 import MyButton from "../../util/MyButton";
 import PostShout from '../shout/PostShout';
+import Notifications from './Notifications';
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 
+
 import HomeIcon from "@material-ui/icons/Home";
-import Notifications from "@material-ui/icons/Notifications";
+
 
 export class Navbar extends Component {
   render() {
@@ -27,9 +29,7 @@ export class Navbar extends Component {
                 <HomeIcon  />
               </MyButton>
               </Link>
-             <MyButton tip="Notifications">
                  <Notifications />
-             </MyButton>
             </Fragment>
           ) : (
             <Fragment>

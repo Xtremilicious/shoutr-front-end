@@ -4,7 +4,8 @@ import {
   SET_UNAUTHENTICATED,
   LOADING_USER,
   LIKE_SHOUT,
-  UNLIKE_SHOUT
+  UNLIKE_SHOUT,
+  MARK_NOTIFICATIONS_READ
 } from "../types";
 
 const initialState = {
@@ -12,7 +13,7 @@ const initialState = {
   credentials: {},
   loading: false,
   likes: [],
-  notification: []
+  notifications: []
 };
 
 export default function(state = initialState, action) {
@@ -51,6 +52,11 @@ export default function(state = initialState, action) {
             ...state,
             likes: state.likes.filter(like => like.shoutID !== action.payload.shoutID)
           }
+          case MARK_NOTIFICATIONS_READ:
+            state.notifications.forEach(not => not.read = true);
+            return{
+              ...state
+            }
     default:
         return state;
   }

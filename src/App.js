@@ -18,6 +18,7 @@ import themeFile from "./util/theme";
 import Home from "./pages/home";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
+import User from "./pages/user";
 
 import AuthRoute from "./util/AuthRoute";
 
@@ -62,6 +63,8 @@ function App() {
                   path="/signup"
                   component={Signup}
                 />
+                <Route exact path="/users/:handle" component={User} />
+                <Route exact path="/users/:handle/shout/:shoutID" component={User} />
               </Switch>
             </div>
           </Router>

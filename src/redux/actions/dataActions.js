@@ -120,3 +120,21 @@ export const submitComment = (shoutID, commentData) => dispatch => {
       });
     });
 };
+
+
+export const getUserData = (userHandle) => dispatch => {
+  dispatch({type: LOADING_DATA});
+  axios.get(`/user/${userHandle}`)
+  .then(res => {
+    dispatch({
+      type: SET_SHOUTS,
+      payload: res.data.shouts
+    })
+  })
+  .catch(() => {
+    dispatch({
+      type: SET_SHOUTS,
+      payload: null
+    })
+  })
+}
