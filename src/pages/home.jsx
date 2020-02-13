@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 import Shout from "../components/shout/Shout";
 import Profile from "../components/profile/Profile";
+import ShoutSkeleton from '../util/ShoutSkeleton';
 
 import { connect } from "react-redux";
 import { getShouts } from "../redux/actions/dataActions";
@@ -17,7 +18,9 @@ export class home extends Component {
     const { shouts, loading } = this.props.data;
     let recentShoutsMarkup = !loading
       ? shouts.map(shout => <Shout key={shout.shoutID} shout={shout} />)
-      : "Loading...";
+      : (
+        <ShoutSkeleton/>
+      );
 
     return (
       <Grid container>

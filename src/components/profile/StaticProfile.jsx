@@ -13,49 +13,7 @@ import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
 
 const styles = theme => ({
-  invisibleSeparator: {
-    border: "none",
-    margin: 4
-  },
-  visibleSeparator: {
-    width: "100%",
-    borderBottom: "1px solid rgba(0,0,0,0.1)",
-    marginBottom: 20
-  },
-  paper: {
-    padding: 20
-  },
-  profile: {
-    "& .image-wrapper": {
-      textAlign: "center",
-      position: "relative",
-      "& button": {
-        position: "absolute",
-        top: "80%",
-        left: "70%"
-      }
-    },
-    "& .profile-image": {
-      width: 200,
-      height: 200,
-      objectFit: "cover",
-      maxWidth: "100%",
-      borderRadius: "50%"
-    },
-    "& .profile-details": {
-      textAlign: "center",
-      "& span, svg": {
-        verticalAlign: "middle"
-      },
-      "& a": {
-        color: "#00bcd4"
-      }
-    },
-    "& hr": {
-      border: "none",
-      margin: "0 0 10px 0"
-    }
-  }
+  ...theme.spreadThis
 });
 
 const StaticProfile = props => {
