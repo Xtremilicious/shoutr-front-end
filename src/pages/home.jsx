@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import PropTypes from "prop-types";
 
-import Shout from "../components/Shout";
-import Profile from "../components/Profile";
+import Shout from "../components/shout/Shout";
+import Profile from "../components/profile/Profile";
 
 import { connect } from "react-redux";
 import { getShouts } from "../redux/actions/dataActions";

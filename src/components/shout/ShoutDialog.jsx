@@ -5,8 +5,10 @@ import { connect } from "react-redux";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 
-import MyButton from "../util/MyButton";
-import LikeButton from './LikeButton'
+import MyButton from "../../util/MyButton";
+import LikeButton from './LikeButton';
+import Comments from './Comments';
+import CommentForm from './CommentForm';
 
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -18,14 +20,10 @@ import CloseIcon from "@material-ui/icons/Close";
 import UnfoldMore from "@material-ui/icons/UnfoldMore";
 import ChatIcon from '@material-ui/icons/Chat';
 
-import { getShout } from "../redux/actions/dataActions";
+import { getShout,clearErrors } from "../../redux/actions/dataActions";
 
 const styles = theme => ({
     ...theme.spreadThis,
-    invisibleSeparator: {
-        border: 'none',
-        margin: 4
-    },
     profileImage: {
         maxWidth: 200,
         height: 200,
@@ -58,6 +56,7 @@ class ShoutDialog extends Component {
     this.setState({
       open: false
     });
+    this.props.clearErrors();
   };
   handleOpen = () => {
     this.setState({
@@ -75,7 +74,8 @@ class ShoutDialog extends Component {
         likeCount,
         commentCount,
         userImage,
-        userHandle
+        userHandle,
+        comments
       },
       UI: { loading }
     } = this.props;
@@ -108,6 +108,9 @@ class ShoutDialog extends Component {
           </MyButton>
           <span>{commentCount} comments</span>
         </Grid>
+        <hr className={classes.visibleSeparator}/>
+        <CommentForm shoutID={shoutID}/>
+        <Comments comments={comments}/>
       </Grid>
     );
 
@@ -147,7 +150,8 @@ ShoutDialog.propTypes = {
   shoutID: PropTypes.string.isRequired,
   userHandle: PropTypes.string.isRequired,
   shout: PropTypes.object.isRequired,
-  UI: PropTypes.object.isRequired
+  UI: PropTypes.object.isRequired,
+  clearErrors: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -155,7 +159,8 @@ const mapStateToProps = state => ({
   UI: state.UI
 });
 const mapActionsToProps = {
-  getShout
+  getShout,
+  clearErrors
 };
 export default connect(
   mapStateToProps,

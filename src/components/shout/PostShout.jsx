@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 import { connect } from "react-redux";
-import { postShout, clearErrors } from "../redux/actions/dataActions";
+import { postShout, clearErrors } from "../../redux/actions/dataActions";
 
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -13,7 +13,6 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import EditIcon from "@material-ui/icons/Edit";
 import AddIcon from "@material-ui/icons/Add";
 import CloseIcon from "@material-ui/icons/Close";
 
@@ -72,7 +71,7 @@ export class PostShout extends Component {
     });
   };
 
-  handleSubbmit = event => {
+  handleSubmit = event => {
     event.preventDefault();
     this.props.postShout({ body: this.state.body });
   };
@@ -102,7 +101,7 @@ export class PostShout extends Component {
           </MyButton>
           <DialogTitle>Post a new Shout!</DialogTitle>
           <DialogContent>
-            <form onSubmit={this.handleSubbmit}>
+            <form onSubmit={this.handleSubmit}>
               <TextField
                 name="body"
                 type="text"

@@ -5,7 +5,8 @@ import {
   UNLIKE_SHOUT,
   LOADING_DATA,
   DELETE_SHOUT,
-  SET_SHOUT
+  SET_SHOUT,
+  SUBMIT_COMMENT
 } from "../types";
 
 const initialState = {
@@ -35,11 +36,12 @@ export default function(state = initialState, action) {
       };
     case LIKE_SHOUT:
     case UNLIKE_SHOUT:
+      console.log(action.payload);
       index = state.shouts.findIndex(
         shout => shout.shoutID === action.payload.shoutID
       );
       state.shouts[index] = action.payload;
-      if(state.shout.shoutID === action.payload.shoutID){
+      if (state.shout.shoutID === action.payload.shoutID) {
         state.shout = action.payload;
       }
       return {
@@ -55,6 +57,19 @@ export default function(state = initialState, action) {
       return {
         ...state,
         shouts: [action.payload, ...state.shouts]
+      };
+    case SUBMIT_COMMENT:
+      console.log(action.payload);
+      index = state.shouts.findIndex(
+        shout => shout.shoutID === action.payload.shoutID
+      );
+      return {
+        ...state,
+        shout: {
+          ...state.shout,
+          comments: [action.payload, ...state.shout.comments],
+          commentCount: state.shout.commentCount + 1
+        }
       };
     default:
       return {
