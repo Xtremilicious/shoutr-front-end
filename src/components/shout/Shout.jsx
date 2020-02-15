@@ -83,7 +83,7 @@ export class Shout extends Component {
           <div className={classes.content}>
             {deleteButton}
             <div style={{ display: "flex", color: "#BDBDBD" }}>
-              <Link to={`/users/${handle}`}>
+              <Link to={`/users/${userHandle}`}>
                 <div className="user-handle">@{userHandle}</div>
               </Link>
               <div style={{ marginLeft: "5px" }}>
