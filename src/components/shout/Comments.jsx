@@ -1,22 +1,41 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 
-import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+
+import styled from "styled-components";
+const Wrapper = styled.div`
+  .card {
+    position: relative;
+    display: flex;
+    color: white;
+    width: 100%;
+  }
+  .user-handle {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+  }
+`;
 
 const styles = theme => ({
   ...theme.spreadThis,
-  copmmentImage: {
-    maxWidth: "100%",
-    height: 100,
+  commentImage: {
+    marginTop: 20,
+    marginLeft: 20,
+    width: 50,
+    height: 50,
     objectFit: "cover",
+    maxWidth: "100%",
     borderRadius: "50%"
   },
-  commentData: {
-    marginLeft: 20
+
+  content: {
+    padding: 25,
+    objectFit: "cover"
   }
 });
 
@@ -24,46 +43,36 @@ export class Comments extends Component {
   render() {
     const { classes, comments } = this.props;
     return (
-      <Fragment>
-        <Grid container>
-          {comments.map((comment, index) => {
-            const { body, createdAt, userImage, userHandle } = comment;
-            return (
-              <Fragment key={createdAt}>
-                <Grid item sm={12}>
-                  <Grid container>
-                    <Grid item sm={2}>
-                      <img
-                        src={userImage}
-                        alt="comment"
-                        className={classes.copmmentImage}
-                      />
-                    </Grid>
-                    <Grid item sm={9}>
-                      <div className={classes.commentData}>
-                        <Typography
-                          variant="h5"
-                          component={Link}
-                          to={`/users/${userHandle}`}
-                          color="primary"
-                        >
-                          {userHandle}
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary">
-                          {dayjs(createdAt).format("h:mm a, MMMM DD YYYY")}
-                        </Typography>
-                        <hr className={classes.invisibleSeparator} />
-                        <Typography cariant="body1">{body}</Typography>
+      <Wrapper>
+        {comments.map((comment, index) => {
+          const { body, createdAt, userImage, userHandle } = comment;
+          return (
+            <div key={createdAt}>
+              <div className="card">
+                <div style={{ display: "flex", flexDirection: "row" ,  borderTop: '0.3px solid grey'}}>
+                  <img
+                    src={userImage}
+                    alt="Profile"
+                    className={classes.commentImage}
+                  />
+                  <div className={classes.content}>
+                    <div style={{ display: "flex", color: "#BDBDBD" }}>
+                      <Link to={`/users/${userHandle}`}>
+                        <div className="user-handle">@{userHandle}</div>
+                      </Link>
+                      <div style={{ marginLeft: "5px" }}>
+                        · {dayjs(createdAt).fromNow()}
                       </div>
-                    </Grid>
-                  </Grid>
-                </Grid>
-                {index !== comments.length - 1 && (<hr className={classes.visibleSeparator} />)}
-              </Fragment>
-            );
-          })}
-        </Grid>
-      </Fragment>
+                    </div>
+
+                    <Typography variant="body1">{body}</Typography>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </Wrapper>
     );
   }
 }

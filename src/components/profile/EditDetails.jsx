@@ -15,10 +15,30 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import EditIcon from "@material-ui/icons/Edit";
 
+import styled from "styled-components";
+
+const StyledTextField = styled(TextField)`
+  /* default */
+  .MuiInput-underline:before {
+    border-bottom: 1px solid white;
+  }
+  /* hover (double-ampersand needed for specificity reasons. */
+  && .MuiInput-underline:hover:before {
+    border-bottom: 2px solid white;
+  }
+`;
 const styles = theme => ({
   ...theme.spreadThis,
   button: {
     float: "right"
+  },
+  floatingLabelFocusStyle: {
+    color: "white"
+  },
+  input: {
+    color: "white",
+    fontSize: "16px",
+    borderBottom: "none"
   }
 });
 
@@ -84,49 +104,72 @@ export class EditDetails extends Component {
           onClose={this.handleClose}
           fullWidth
           maxWidth="sm"
+          style={{ background: "#2E2E2E" }}
         >
-          <DialogTitle>Edit your details</DialogTitle>
-          <DialogContent>
+          <DialogTitle style={{ background: "#2E2E2E", color: "white" }}>
+            Edit your details
+          </DialogTitle>
+          <DialogContent style={{ background: "#2E2E2E", color: "white" }}>
             <form>
-              <TextField
+              <StyledTextField
                 name="bio"
                 type="text"
                 label="Bio"
                 multiline
-                rows="3"
                 placeholder="A short bio about yourself"
-                className={classes.textField}
+                className="shout-form"
+                style={{ marginBottom: "10px" }}
+                InputProps={{
+                  className: classes.input
+                }}
                 value={this.state.bio}
                 onChange={this.handleChange}
+                InputLabelProps={{
+                  className: classes.floatingLabelFocusStyle
+                }}
                 fullWidth
-              ></TextField>
-              <TextField
+              ></StyledTextField>
+              <StyledTextField
                 name="website"
                 type="text"
                 label="Website"
                 placeholder="Your personal/professional website"
-                className={classes.textField}
+                className="shout-form"
+                style={{ marginBottom: "10px" }}
+                InputProps={{
+                  className: classes.input
+                }}
+                InputLabelProps={{
+                  className: classes.floatingLabelFocusStyle
+                }}
                 value={this.state.website}
                 onChange={this.handleChange}
                 fullWidth
-              ></TextField>
-              <TextField
+              ></StyledTextField>
+              <StyledTextField
                 name="location"
                 type="text"
                 label="Location"
                 placeholder="Where you live"
-                className={classes.textField}
+                className="shout-form"
+                style={{ marginBottom: "10px" }}
+                InputProps={{
+                  className: classes.input
+                }}
+                InputLabelProps={{
+                  className: classes.floatingLabelFocusStyle
+                }}
                 value={this.state.location}
                 onChange={this.handleChange}
                 fullWidth
-              ></TextField>
+              ></StyledTextField>
             </form>
           </DialogContent>
-          <DialogActions>
+          <DialogActions style={{ background: "#2E2E2E", color: "white" }}>
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleSubmit} color="primary">
+            <Button onClick={this.handleSubmit} color="primary" variant="contained" style={{borderRadius: '2rem'}}>
               Submit
             </Button>
           </DialogActions>

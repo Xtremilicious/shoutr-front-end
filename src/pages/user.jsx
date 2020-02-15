@@ -6,9 +6,8 @@ import StaticProfile from "../components/profile/StaticProfile";
 import { connect } from "react-redux";
 import { getUserData } from "../redux/actions/dataActions";
 
-import ShoutSkeleton from '../util/ShoutSkeleton';
-import ProfileSkeleton from '../util/ProfileSkeleton'
-
+import ShoutSkeleton from "../util/ShoutSkeleton";
+import ProfileSkeleton from "../util/ProfileSkeleton";
 
 import Grid from "@material-ui/core/Grid";
 
@@ -43,7 +42,7 @@ export class user extends Component {
     const { shoutIDParam } = this.state;
 
     const shoutsMarkup = loading ? (
-      <ShoutSkeleton/>
+      <ShoutSkeleton />
     ) : shouts === null ? (
       <p>No shouts from this user</p>
     ) : !shoutIDParam ? (
@@ -58,13 +57,13 @@ export class user extends Component {
       })
     );
     return (
-      <Grid container>
-        <Grid item sm={8} xs={12}>
+      <Grid container className="grid-container" >
+        <Grid item sm={7} xs={12} >
           {shoutsMarkup}
         </Grid>
         <Grid item sm={4} xs={12} style={{ paddingLeft: "1rem" }}>
           {this.state.profile === null ? (
-            <ProfileSkeleton/>
+            <ProfileSkeleton />
           ) : (
             <StaticProfile profile={this.state.profile} />
           )}

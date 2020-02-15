@@ -5,7 +5,6 @@ import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 
 import MuiLink from "@material-ui/core/Link";
-import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 
 import LocationOn from "@material-ui/icons/LocationOn";
@@ -22,7 +21,15 @@ const StaticProfile = props => {
     profile: { handle, createdAt, imageUrl, bio, website, location }
   } = props;
   return (
-    <Paper className={classes.paper}>
+    <div
+          style={{
+            border: "0.3px solid grey",
+            overflow: "hidden",
+            background: "#2E2E2E",
+            padding: '2rem',
+            margin: '2rem 2rem 2rem 1rem'
+          }}
+        >
       <div className={classes.profile}>
         <div className="image-wrapper">
           <img src={imageUrl} alt="profile" className="profile-image" />
@@ -59,7 +66,7 @@ const StaticProfile = props => {
           <span>Joined {dayjs(createdAt).format("MMM YYYY")}</span>
         </div>
       </div>
-    </Paper>
+    </div>
   );
 };
 

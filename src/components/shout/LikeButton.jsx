@@ -36,7 +36,7 @@ export class LikeButton extends Component {
         </MyButton>
       </Link>
     ) : this.likedShout() ? (
-      <MyButton tip="Undo like" onClick={this.unlikeShout}>
+      <MyButton tip="Undo Like" onClick={this.unlikeShout}>
         <FavoriteIcon color="primary" />
       </MyButton>
     ) : (

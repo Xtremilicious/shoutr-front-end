@@ -20,15 +20,11 @@ body{
 .nav-container{
   overflow: hidden;
   position: fixed;
+  height: 100vh;
 }
 .nav-container svg{
   color: #fff;
   font-size: 1.8rem;
-}
-
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: red;
-  opacity: 1; /* Firefox */
 }
 
 a{
@@ -38,11 +34,10 @@ a{
   position: fixed;
   left: 0;
   background: #2E2E2E;
-  height: 100vh;
+  min-height: 100vh;
   z-index: 200;
   display: flex;
   overflow: hidden;
-  
 }
 
 .grid-container{
@@ -68,6 +63,7 @@ a{
 .shout-form{
   color: white !important;
   border-bottom: none!important;
+  
 }
 
 input {
