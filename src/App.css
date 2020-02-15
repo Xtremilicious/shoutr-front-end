@@ -3,6 +3,7 @@ html{
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
     background-color: #2E2E2E;
+    color: white;
     
 }
 body{
@@ -16,10 +17,18 @@ body{
 
 }
 
-
+.nav-container{
+  overflow: hidden;
+  position: fixed;
+}
 .nav-container svg{
   color: #fff;
   font-size: 1.8rem;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: red;
+  opacity: 1; /* Firefox */
 }
 
 a{
@@ -28,12 +37,11 @@ a{
 .nav-bar{
   position: fixed;
   left: 0;
-  top: 0;
-  background: #2E2E2E !important;
+  background: #2E2E2E;
   height: 100vh;
-  width: fit-content;
   z-index: 200;
   display: flex;
+  overflow: hidden;
   
 }
 
@@ -64,6 +72,10 @@ a{
 
 input {
   color: "white"
+}
+input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white!important;
+  opacity: 1; /* Firefox */
 }
 
 .image{

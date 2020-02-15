@@ -6,11 +6,8 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import MyButton from "../../util/MyButton";
 import DeleteShout from "./DeleteShout";
 import ShoutDialog from "./ShoutDialog";
-
-import ChatIcon from "@material-ui/icons/Chat";
 
 import LikeButton from "./LikeButton";
 

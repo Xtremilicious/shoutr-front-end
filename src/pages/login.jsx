@@ -16,7 +16,12 @@ import { loginUser } from "../redux/actions/userActions";
 
 const styles = {
   form: {
-    textAlign: "center"
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    height: '100vh',
+    color: 'white',
   },
   image: {
     margin: "5px auto 5px auto",
@@ -24,14 +29,18 @@ const styles = {
   },
   pageTitle: {
     margin: "5px auto 5px auto",
-    fontWeight: 200
+    fontWeight: 300,
+    color: 'white'
   },
   textField: {
     margin: "5px auto 5px auto"
   },
   button: {
     marginTop: 20,
-    position: "relative"
+    position: "relative",
+    textTransform: "none",
+    borderRadius: "2rem",
+    fontSize: "1rem"
   },
   customError: {
     color: "red",
@@ -40,6 +49,13 @@ const styles = {
   },
   progress: {
     position: "absolute"
+  },
+  input: {
+    color: "white",
+    fontSize: "18px",
+    borderBottom: "none",
+    fontWeight: "300",
+    marginBottom: 20
   }
 };
 
@@ -84,11 +100,12 @@ class login extends Component {
     const { errors } = this.state;
 
     return (
+      <div className="post-shout">
       <Grid container className={classes.form}>
         <Grid item sm />
         <Grid item sm>
           <img src={AppIcon} alt="Shoutr Logo" className={classes.image} />
-          <Typography variant="h2" className={classes.pageTitle}>
+          <Typography variant="h3" className={classes.pageTitle}>
             Login
           </Typography>
           <form noValidate onSubmit={this.handleSubmit}>
@@ -96,8 +113,12 @@ class login extends Component {
               id="email"
               name="email"
               type="email"
-              label="Email"
-              className={classes.textField}
+              color="primary"
+              className="input"
+              placeholder="Email"
+              InputProps={{
+                className: classes.input,
+              }}
               helperText={errors.email}
               error={errors.email ? true : false}
               value={this.state.email}
@@ -106,10 +127,13 @@ class login extends Component {
             />
             <TextField
               id="password"
+              className="shout-form"
               name="password"
               type="password"
-              label="Password"
-              className={classes.textField}
+              placeholder="Password"
+              InputProps={{
+                className: classes.input,
+              }}
               helperText={errors.password}
               error={errors.password ? true : false}
               value={this.state.password}
@@ -133,14 +157,15 @@ class login extends Component {
               )}
               Login
             </Button>
-            <br />
+            <br /><br />
             <small>
-              Don't have an account? <Link to="/signup">Sign up </Link>
+              Don't have an account? <Link to="/signup" style={{color: "#00bcd4"}}>Sign up </Link>
             </small>
           </form>
         </Grid>
         <Grid item sm />
       </Grid>
+      </div>
     );
   }
 }

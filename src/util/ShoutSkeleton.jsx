@@ -3,10 +3,6 @@ import noImage from "../images/noImage.png";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-
 const styles = theme => ({
   ...theme.spreadThis,
   cardContent: {

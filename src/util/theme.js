@@ -53,7 +53,11 @@ export default {
       marginBottom: 20
     },
     paper: {
-      padding: 20
+      padding: 20,
+      background: '#2E2E2E',
+      borderRadius: 'none',
+      boxShadow: 'none',
+      color: 'white'
     },
     profile: {
       "& .image-wrapper": {

@@ -6,15 +6,14 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import { logoutUser, uploadImage } from "../../redux/actions/userActions";
 
-import EditDetails from './EditDetails';
-import MyButton from '../../util/MyButton';
-import ProfileSkeleton from '../..//util/ProfileSkeleton'
+import EditDetails from "./EditDetails";
+import MyButton from "../../util/MyButton";
+import ProfileSkeleton from "../..//util/ProfileSkeleton";
 
 //MUI Stuff
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import MuiLink from "@material-ui/core/Link";
-import Paper from "@material-ui/core/Paper";
 
 //Icons
 import LocationOn from "@material-ui/icons/LocationOn";
@@ -55,64 +54,83 @@ export class Profile extends Component {
     console.log(this.props);
     let profileMarkup = !loading ? (
       authenticated ? (
-        <Paper className={classes.paper}>
-          <div className={classes.profile}>
-            <div className="image-wrapper">
-              <img src={imageUrl} alt="profile" className="profile-image" />
-              <input
-                type="file"
-                id="imageInput"
-                hidden="hidden"
-                onChange={this.handleImageChange}
-              />
-             
-              <MyButton tip="Edit Profile Picture" onClick={this.handleEditPicture} btnClassName="button">
-              <EditIcon color="primary" />
-              </MyButton>
-            </div>
-            <hr />
+        <div
+          style={{
+            border: "0.3px solid grey",
+            overflow: "hidden",
+            background: "#2E2E2E"
+          }}
+        >
+          <div style={{padding: '2rem'}}>
+            <div className={classes.profile}>
+              <div className="image-wrapper">
+                <img src={imageUrl} alt="profile" className="profile-image" />
+                <input
+                  type="file"
+                  id="imageInput"
+                  hidden="hidden"
+                  onChange={this.handleImageChange}
+                />
 
-            <div className="profile-details">
-              <MuiLink
-                component={Link}
-                to={`/users/${handle}`}
-                color="primary"
-                variant="h5"
-              >
-                @{handle}
-              </MuiLink>
+                <MyButton
+                  tip="Edit Profile Picture"
+                  onClick={this.handleEditPicture}
+                  btnClassName="button"
+                >
+                  <EditIcon color="primary" />
+                </MyButton>
+              </div>
               <hr />
-              {bio && <Typography variant="body2">{bio}</Typography>}
-              <hr />
-              {location && (
-                <Fragment>
-                  <LocationOn color="primary" /> <span>{location}</span>
-                  <hr />
-                </Fragment>
-              )}
-              {website && (
-                <Fragment>
-                  <LinkIcon color="primary" />
-                  <a href={website} target="_blank" rel="noopener noreferrer">
-                    {" "}
-                    {website}
-                  </a>
-                  <hr />
-                </Fragment>
-              )}
-              <CalendarToday color="primary" />{" "}
-              <span>Joined {dayjs(createdAt).format("MMM YYYY")}</span>
-            </div>
-            <MyButton tip="Logout" onClick={this.handleLogout}>
-              <KeyboardReturn color="primary" />
+
+              <div className="profile-details">
+                <MuiLink
+                  component={Link}
+                  to={`/users/${handle}`}
+                  color="primary"
+                  variant="h5"
+                >
+                  @{handle}
+                </MuiLink>
+                <hr />
+                {bio && <Typography variant="body2">{bio}</Typography>}
+                <hr />
+                {location && (
+                  <Fragment>
+                    <LocationOn color="primary" /> <span>{location}</span>
+                    <hr />
+                  </Fragment>
+                )}
+                {website && (
+                  <Fragment>
+                    <LinkIcon color="primary" />
+                    <a href={website} target="_blank" rel="noopener noreferrer">
+                      {" "}
+                      {website}
+                    </a>
+                    <hr />
+                  </Fragment>
+                )}
+                <CalendarToday color="primary" />{" "}
+                <span>Joined {dayjs(createdAt).format("MMM YYYY")}</span>
+              </div>
+              <MyButton tip="Logout" onClick={this.handleLogout}>
+                <KeyboardReturn color="primary" />
               </MyButton>
-            <EditDetails/>
+              <EditDetails />
+            </div>
           </div>
-        </Paper>
+        </div>
       ) : (
-        <Paper className={classes.paper}>
-          <Typography variant="body2" align="center">
-            No profile found, please login again
+        <div
+          style={{
+            border: "0.3px solid grey",
+            overflow: "hidden",
+            background: "#2E2E2E",
+            padding: '1rem'
+          }}
+        >
+          <Typography variant="h6" align="center">
+            Get Started
           </Typography>
           <div className={classes.buttons}>
             <Button
@@ -120,6 +138,7 @@ export class Profile extends Component {
               color="primary"
               component={Link}
               to="/login"
+              style={{textTransform: 'none', borderRadius: '2rem', fontSize: '1rem'}}
             >
               Login
             </Button>
@@ -128,14 +147,15 @@ export class Profile extends Component {
               color="secondary"
               component={Link}
               to="/signup"
+              style={{textTransform: 'none', borderRadius: '2rem', fontSize: '1rem'}}
             >
               Signup
             </Button>
           </div>
-        </Paper>
+        </div>
       )
     ) : (
-      <ProfileSkeleton/>
+      <ProfileSkeleton />
     );
 
     return profileMarkup;

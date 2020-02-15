@@ -15,7 +15,12 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = {
   form: {
-    textAlign: "center"
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    height: '100vh',
+    color: 'white',
   },
   image: {
     margin: "5px auto 5px auto",
@@ -23,14 +28,18 @@ const styles = {
   },
   pageTitle: {
     margin: "5px auto 5px auto",
-    fontWeight: 200
+    fontWeight: 300,
+    color: 'white'
   },
   textField: {
     margin: "5px auto 5px auto"
   },
   button: {
     marginTop: 20,
-    position: "relative"
+    position: "relative",
+    textTransform: "none",
+    borderRadius: "2rem",
+    fontSize: "1rem"
   },
   customError: {
     color: "red",
@@ -39,6 +48,13 @@ const styles = {
   },
   progress: {
     position: "absolute"
+  },
+  input: {
+    color: "white",
+    fontSize: "18px",
+    borderBottom: "none",
+    fontWeight: "300",
+    marginBottom: 20
   }
 };
 
@@ -102,7 +118,7 @@ class signup extends Component {
               id="email"
               name="email"
               type="email"
-              label="Email"
+              placeholder="Email"
               className={classes.textField}
               helperText={errors.email}
               error={errors.email ? true : false}
@@ -114,7 +130,7 @@ class signup extends Component {
               id="password"
               name="password"
               type="password"
-              label="Password"
+              placeholder="Password"
               className={classes.textField}
               helperText={errors.password}
               error={errors.password ? true : false}
@@ -126,7 +142,7 @@ class signup extends Component {
               id="confirmPassword"
               name="confirmPassword"
               type="password"
-              label="Confirm Password"
+              placeholder="Confirm Password"
               className={classes.textField}
               helperText={errors.confirmPassword}
               error={errors.confirmPassword ? true : false}
@@ -138,7 +154,7 @@ class signup extends Component {
               id="handle"
               name="handle"
               type="text"
-              label="Handle"
+              placeholder="Handle"
               className={classes.textField}
               helperText={errors.handle}
               error={errors.handle ? true : false}
@@ -163,9 +179,9 @@ class signup extends Component {
               )}
               Signup
             </Button>
-            <br />
+            <br /><br />
             <small>
-              Already have an account? <Link to="/login">Login</Link>
+              Already have an account? <Link to="/login" style={{color: "#00bcd4"}}>Login</Link>
             </small>
           </form>
         </Grid>

@@ -6,17 +6,11 @@ import { connect } from "react-redux";
 import { postShout, clearErrors } from "../../redux/actions/dataActions";
 import noImage from '../../images/noImage.png'
 
-import MyButton from "../../util/MyButton";
-
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import AddIcon from "@material-ui/icons/Add";
-import CloseIcon from "@material-ui/icons/Close";
-import TelegramIcon from "@material-ui/icons/Telegram";
+import logo from "../../images/shoutr2.png";
 
 const styles = theme => ({
   ...theme.spreadThis,
@@ -135,7 +129,8 @@ export class PostShout extends Component {
                   disabled={loading}
                 >
                   Shout
-                  <TelegramIcon style={{ marginLeft: "3px" }} />
+                  <img src={logo} style={{ marginLeft: "4px", width: '25px',
+    height: '25px' }} className="image" alt="Shoutr" />
                   {loading && (
                     <CircularProgress
                       size={30}

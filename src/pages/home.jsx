@@ -33,7 +33,7 @@ export class home extends Component {
           {authenticated?<ShoutIt/> :null}
           {recentShoutsMarkup}
         </Grid>
-        <Grid item sm={4} xs={12} style={{ paddingLeft: "1rem" }}>
+        <Grid item sm={4} xs={12} style={{ padding: "2rem" }}>
           <Profile />
         </Grid>
       </Grid>

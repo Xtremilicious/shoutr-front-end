@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -6,12 +6,14 @@ import { connect } from "react-redux";
 import MyButton from "../../util/MyButton";
 import Notifications from "./Notifications";
 
-import noImage from '../../images/noImage.png'
+import noImage from "../../images/noImage.png";
+import logo from "../../images/shoutr.png";
 
 import Toolbar from "@material-ui/core/Toolbar";
-import Button from "@material-ui/core/Button";
 
 import HomeIcon from "@material-ui/icons/Home";
+import PersonAddIcon from "@material-ui/icons/PersonAdd";
+import VpnKeyIcon from "@material-ui/icons/VpnKey";
 
 export class Navbar extends Component {
   render() {
@@ -23,7 +25,16 @@ export class Navbar extends Component {
       <div className="nav-bar">
         <Toolbar className="nav-container">
           {authenticated ? (
-            <div style={{ display: "flex", flexDirection: "column", alignItems: 'center' }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center"
+              }}
+            >
+              <div style={{marginBottom: '6px'}}>
+                <img src={logo} alt="Me" className="image" />
+              </div>
               <Link to="/">
                 <MyButton tip="">
                   <HomeIcon />
@@ -32,21 +43,32 @@ export class Navbar extends Component {
               <Notifications />
               <Link to={`/users/${handle}`}>
                 <MyButton tip="">
-                  <img src={!loading ? userImage : noImage} alt="Me" className="image"/>
+                  <img
+                    src={!loading ? userImage : noImage}
+                    alt="Me"
+                    className="image"
+                  />
                 </MyButton>
               </Link>
             </div>
           ) : (
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <Button color="inherit" component={Link} to="/login">
-                Login
-              </Button>
-              <Button color="inherit" component={Link} to="/">
-                Home
-              </Button>
-              <Button color="inherit" component={Link} to="/signup">
-                Signup
-              </Button>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: 'center' }}>
+              <div><img src={logo} alt="Shoutr" className="image" /></div>
+              <Link to="/login">
+                <MyButton tip="Login">
+                  <VpnKeyIcon />
+                </MyButton>
+              </Link>
+              <Link to="/">
+                <MyButton tip="">
+                  <HomeIcon />
+                </MyButton>
+              </Link>
+              <Link to="/signup">
+                <MyButton tip="Register">
+                  <PersonAddIcon />
+                </MyButton>
+              </Link>
             </div>
           )}
         </Toolbar>
@@ -56,7 +78,7 @@ export class Navbar extends Component {
 }
 
 Navbar.propTypes = {
-  authenticated: PropTypes.bool.isRequired,
+  authenticated: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
