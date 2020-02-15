@@ -45,6 +45,9 @@ const styles = theme => ({
         textAlign: 'center',
         marginTop: 50,
         marginBottom: 50
+    },
+    expandButtonComment:{
+
     }
 });
 
@@ -141,10 +144,10 @@ class ShoutDialog extends Component {
       <Fragment>
         <MyButton
           onClick={this.handleOpen}
-          tip="Expand Shout"
-          tipClassName={classes.expandButton}
+          tip={!this.props.comment ? "Expand Shout" : "Comment"}
+          tipClassName={!this.props.comment ? classes.expandButton : classes.expandButtonComment}
         >
-          <UnfoldMore color="primary" />
+          {this.props.comment? <ChatIcon color="primary" />: <UnfoldMore color="primary" />}
         </MyButton>
         <Dialog
           open={this.state.open}

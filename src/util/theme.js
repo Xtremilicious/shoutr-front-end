@@ -18,7 +18,8 @@ export default {
       useNextVariants: true
     },
     form: {
-      textAlign: "center"
+      textAlign: "center",
+      borderBottom: "none",
     },
     image: {
       margin: "20px auto 20px auto"
@@ -27,7 +28,8 @@ export default {
       margin: "10px auto 10px auto"
     },
     textField: {
-      margin: "10px auto 10px auto"
+      margin: "10px auto 10px auto",
+      color: "white"
     },
     button: {
       marginTop: 20,

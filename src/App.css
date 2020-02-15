@@ -2,22 +2,76 @@ html{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-    background-color: rgb(245, 245, 245);
+    background-color: #2E2E2E;
+    
+}
+body{
+  margin: 0px !important;
+  padding: 0;
 }
 
 .container{
-  margin: 80px 7% 0 7%;
-  max-width: 1200px;
+  margin: 0;
+  margin-left: 80px;
+
 }
 
-.nav-container{
-  margin: auto;
-}
 
 .nav-container svg{
   color: #fff;
+  font-size: 1.8rem;
 }
 
 a{
   text-decoration: none;
+}
+.nav-bar{
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: #2E2E2E !important;
+  height: 100vh;
+  width: fit-content;
+  z-index: 200;
+  display: flex;
+  
+}
+
+.grid-container{
+  display: flex;
+  justify-content: center;
+}
+
+.page-title{
+  color: white;
+  font-size: 22px;
+  border-left:0.3px solid grey;
+  border-bottom: 0.3px solid grey;
+  border-right:0.3px solid grey;
+  padding: 0.7rem;
+  font-weight:  bold;
+}
+
+.post-shout{
+  color: white;
+  width: 100%;
+}
+
+.shout-form{
+  color: white !important;
+  border-bottom: none!important;
+}
+
+input {
+  color: "white"
+}
+
+.image{
+  margin-top: 20;
+    margin-left: 20;
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    max-width: 100%;
+    border-radius: 50%;
 }

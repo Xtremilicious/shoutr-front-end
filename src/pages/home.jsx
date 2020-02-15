@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import Shout from "../components/shout/Shout";
 import Profile from "../components/profile/Profile";
 import ShoutSkeleton from '../util/ShoutSkeleton';
+import ShoutIt from '../components/shout/ShoutIt';
 
 import { connect } from "react-redux";
 import { getShouts } from "../redux/actions/dataActions";
@@ -16,6 +17,7 @@ export class home extends Component {
 
   render() {
     const { shouts, loading } = this.props.data;
+    const authenticated = this.props.authenticated;
     let recentShoutsMarkup = !loading
       ? shouts.map(shout => <Shout key={shout.shoutID} shout={shout} />)
       : (
@@ -23,8 +25,12 @@ export class home extends Component {
       );
 
     return (
-      <Grid container>
-        <Grid item sm={8} xs={12}>
+      <Grid container className="grid-container">
+        <Grid item sm={7} xs={12}>
+          <div className="page-title">
+              Home
+          </div>
+          {authenticated?<ShoutIt/> :null}
           {recentShoutsMarkup}
         </Grid>
         <Grid item sm={4} xs={12} style={{ paddingLeft: "1rem" }}>
@@ -37,10 +43,11 @@ export class home extends Component {
 
 home.propTypes = {
   getShouts: PropTypes.func.isRequired,
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
 };
 const mapStateToProps = state => ({
-  data: state.data
+  data: state.data,
+  authenticated: state.user.authenticated
 });
 
 export default connect(mapStateToProps, { getShouts })(home);
